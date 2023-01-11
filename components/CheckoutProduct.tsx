@@ -1,7 +1,6 @@
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { urlFor } from "../sanity";
-import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
 import { removeFromBasket } from "../redux/basketSlice";
 import { toast } from "react-hot-toast";
@@ -48,13 +47,7 @@ function CheckoutProduct({ id, items }: Props) {
                 </div>
                 <div className="flex flex-col items-end space-y-4">
                     <h4 className="text-xl font-semibold lg:text-2xl">
-                        <Currency
-                            quantity={items.reduce(
-                                (total, item) => total + item.price,
-                                0
-                            )}
-                            currency="USD"
-                        />
+                        {items.reduce((total, item) => total + item.price, 0)}
                     </h4>
                     <button
                         onClick={removeItemFromBasket}
